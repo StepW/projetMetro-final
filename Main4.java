@@ -101,7 +101,7 @@ public class Main4 {
 	
  public static void main(String[] args) {
 		 
-		 //on indique les répertoires des fichiers
+		 //on donne le répertoire de chaque fichier
 		 String fichiernoms = "D:/JAVA/fichiers stations/nom station.txt";
 		 String fichiersommets = "D:/JAVA/fichiers stations/coordonnee sommet.txt";
 		 String fichierarcs = "D:/JAVA/fichiers stations/arc valeur temps.txt";

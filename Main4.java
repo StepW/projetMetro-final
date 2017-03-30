@@ -40,13 +40,13 @@ import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 
 public class Main4 {
 
- 	//on créé un graphe qui va regrouper tout les éléments
+ 	//on crÃ©Ã© un graphe qui va regrouper tout les Ã©lÃ©ments
 	 static Graph<Station, Liaison> g = new DirectedSparseMultigraph<Station, Liaison>();
 	 
-	 //on place les stations qui correspondent aux sommets dans l'interface en fonction des coordonnées attribuées aux stations
+	 //on place les stations qui correspondent aux sommets dans l'interface en fonction des coordonnÃ©es attribuÃ©es aux stations
 	 
-	 //à l'aide de la fonction Transformer, nous voulons placer les sommets
-	 //en fonction des coordonnées X et Y de de chaque station à partir d'objets Point 2D
+	 //Ã  l'aide de la fonction Transformer, nous voulons placer les sommets
+	 //en fonction des coordonnÃ©es X et Y de de chaque station Ã  partir d'objets Point 2D
 	 static Transformer<Station, Point2D> locationTransformer = new Transformer<Station, Point2D>() {
 			
 	        @Override
@@ -61,12 +61,12 @@ public class Main4 {
 	 static StaticLayout<Station, Liaison> layout =
 		new StaticLayout<Station, Liaison>(g, locationTransformer);
 	 
-     //puis nous insérons un module de visualisation du graphe
+     //puis nous insÃ©rons un module de visualisation du graphe
 	 static VisualizationViewer<Station,Liaison> vv = 
 			 new VisualizationViewer<Station,Liaison>(layout);
 
 	 //la valeur de poids d'un arc ici, correspond au temps de trajet dans une liaison,
-	 //en effet dans ca graphe un arc correspond à une liaison entre deux stations de métro
+	 //en effet dans ca graphe un arc correspond Ã  une liaison entre deux stations de mÃ©tro
 	 
 	 static Transformer<Liaison, Integer> wtTransformer = new Transformer<Liaison,Integer>() {
 		 public Integer transform(Liaison link) {
@@ -74,23 +74,23 @@ public class Main4 {
 		 }
 	 };
 
-	 //pour effectuer un calcul d'itinéraire, on utilise un algorithme de Dijkstra.
-	 //on l'utilisera sur le graphe des stations de métro
+	 //pour effectuer un calcul d'itinÃ©raire, on utilise un algorithme de Dijkstra.
+	 //on l'utilisera sur le graphe des stations de mÃ©tro
 	 static DijkstraShortestPath<Station,Liaison> alg = new DijkstraShortestPath<Station, Liaison>(g,wtTransformer);
    	
-	// ces valeurs seront plus tard utilisées pour l'interface graphique
+	// ces valeurs seront plus tard utilisÃ©es pour l'interface graphique
 		private static JPanel container = new JPanel();
 		private static JPanel container1 = new JPanel();
 		  private static JComboBox<String> combo = new JComboBox<String>();
 		  private static JComboBox<String> combo2 = new JComboBox<String>();
-		  private static JLabel choix = new JLabel("Bienvenue, choisissez votre itinéraire :");
-		  private static JLabel debut = new JLabel("Départ :");
-		  private static JLabel fin = new JLabel("Arrivée :");
+		  private static JLabel choix = new JLabel("Bienvenue, choisissez votre itinÃ©raire :");
+		  private static JLabel debut = new JLabel("DÃ©part :");
+		  private static JLabel fin = new JLabel("ArrivÃ©e :");
 		  
 		 private static JLabel texte = new JLabel();
 		 private static JButton bouton = new JButton("Rechercher");
-		 private static JLabel stations = new JLabel("Stations traversées :");
-		 private static JLabel resultats = new JLabel("Résultats :");
+		 private static JLabel stations = new JLabel("Stations traversÃ©es :");
+		 private static JLabel resultats = new JLabel("RÃ©sultats :");
 
 		 private static JButton ajoutStationFerme = new JButton("Ajouter");
 		 private static JButton effacerListe = new JButton("Effacer");
@@ -101,22 +101,22 @@ public class Main4 {
 	
  public static void main(String[] args) {
 		 
-		 //on cherche le fichier à chercher
+		 //on indique les rÃ©pertoires des fichiers
 		 String fichiernoms = "D:/JAVA/fichiers stations/nom station.txt";
 		 String fichiersommets = "D:/JAVA/fichiers stations/coordonnee sommet.txt";
 		 String fichierarcs = "D:/JAVA/fichiers stations/arc valeur temps.txt";
 
 		 
-		 //on créé la liste des stations pour les sommets du graphe
+		 //on crÃ©Ã© la liste des stations pour les sommets du graphe
 			ArrayList<Station> l = new ArrayList<Station>();
 			
-			//on créé la liste des liaisons pour les arcs du graphe
+			//on crÃ©Ã© la liste des liaisons pour les arcs du graphe
 			ArrayList<Liaison> a = new ArrayList<Liaison>();
 			
 
 
 			//-----------------------------------------------------------------------------
-			 //on cherche les éléments dans le fichier texte et on les range dans une liste Arraylist
+			 //on cherche les Ã©lÃ©ments dans le fichier texte et on les range dans une liste Arraylist
 			
 			 try{
 				 //on appelle les fonctions pour appeler le fichier
@@ -136,11 +136,11 @@ public class Main4 {
 
 					while ((ligne=br1.readLine())!=null){
 
-//							//on extrait les données d'une ligne en séparant les identifiants et le nom des stations
+//							//on extrait les donnÃ©es d'une ligne en sÃ©parant les identifiants et le nom des stations
 							String[] st = ligne.split(" ", 2);
 							
 //							//on remplit la liste de sommets avec les objets stations
-							//on créé les variables pour les tests
+							//on crÃ©Ã© les variables pour les tests
 							
 							String nomStation = st[1].trim().toLowerCase();
 							int idStation = Integer.parseInt(st[0]);
@@ -161,14 +161,14 @@ public class Main4 {
 						String[] st = ligne.split(" ");
 						
 						
-						//on intègre les éléments de la liste dans des variables pour le test suivant
+						//on intÃ¨gre les Ã©lÃ©ments de la liste dans des variables pour le test suivant
 						int idStation = Integer.parseInt(st[0]);
 						int coordX = Integer.parseInt(st[1]);
 						int coordY = Integer.parseInt(st[2]);
 						
 						
-						//on parcours la liste et on vérifie dans la liste identifiants de la station
-						//lorsqu'un identifiant est reconnu, on attribut les coordonnées à la station auquelle elle appartient
+						//on parcours la liste et on vÃ©rifie dans la liste identifiants de la station
+						//lorsqu'un identifiant est reconnu, on attribut les coordonnÃ©es Ã  la station auquelle elle appartient
 						
 
 							for(Station station : l){	
@@ -193,26 +193,26 @@ public class Main4 {
 						String[] st = ligne.split(" ");
 						
 						
-						//on intègre les éléments de la liste dans des variables pour le test suivant
+						//on intÃ¨gre les Ã©lÃ©ments de la liste dans des variables pour le test suivant
 						int sI = Integer.parseInt(st[0]);
 						int sF = Integer.parseInt(st[1]);
 						double tempsDouble = Double.parseDouble(st[2]);
 						int temps = (int) tempsDouble;
 						
-						//on commence par vérifier le sommet initiale de l'arc
+						//on commence par vÃ©rifier le sommet initiale de l'arc
 						//pour cela on cherche l'identifiant dans la liste des stations
 						for(Station station : l){
 							if(station.getId() == sI){
 								
-								//quand la condition précédente est remplie, on fait la même opération
+								//quand la condition prÃ©cÃ©dente est remplie, on fait la mÃªme opÃ©ration
 								//avec le sommet final
 								
 									for(Station station2 : l){
 											if(station2.getId() == sF){
 												
-												/*quand les deux stations sont trouvées, on cherche ensuite des arcs
+												/*quand les deux stations sont trouvÃ©es, on cherche ensuite des arcs
 												 *qui sont des correspondances on sait les reconaitre lorsque le temps
-												 *est égal à la valeur double 120.0 
+												 *est Ã©gal Ã  la valeur double 120.0 
 												 */
 												if(tempsDouble == 120.0){
 													a.add(new Liaison(sI,sF,temps,Color.black,true));
@@ -249,31 +249,31 @@ public class Main4 {
 			 
 			 
 			 
-			 /*on ajoute ensuite les arcs à partir de la liste des liaisons
-			 * pour cela créé une boucle qui va parcourir cette liste en lisant l'identifiant du sommet entrant
+			 /*on ajoute ensuite les arcs Ã  partir de la liste des liaisons
+			 * pour cela crÃ©Ã© une boucle qui va parcourir cette liste en lisant l'identifiant du sommet entrant
 			 * 
-			 * en même temps on parcourt la liste des station et on vérifie d'identifiant qu'on associe
+			 * en mÃªme temps on parcourt la liste des station et on vÃ©rifie d'identifiant qu'on associe
 			 * au sommet initiale de la liaison
 			 * 
-			 * on va parcourir les identifiants de cette station qui correspond à un sommet du graphe
+			 * on va parcourir les identifiants de cette station qui correspond Ã  un sommet du graphe
 			 */
 
 			 
 			 for(Liaison liaison : a){
 				 for(Station station : l){
 
-					 /* en même temps on parcourt la liste des station et on vérifie d'identifiant qu'on associe
+					 /* en mÃªme temps on parcourt la liste des station et on vÃ©rifie d'identifiant qu'on associe
 					 *au sommet initiale de la liaison
 					 */
 						 if(station.getId() == liaison.getA()){
 							 
-							//quand l'identifiant est trouvé, on fait la même opération pour le sommet final
+							//quand l'identifiant est trouvÃ©, on fait la mÃªme opÃ©ration pour le sommet final
 							 for(Station stat : l){
 
 									 if(stat.getId() == liaison.getB()){
 										 
 							//une fois le sommet initial et final, on va pouvoir ajouter un arc dans le graphe
-							//on recommence jusqu'à ce que toute la liste des liaisons soit parcourue
+							//on recommence jusqu'Ã  ce que toute la liste des liaisons soit parcourue
 										 int d = liaison.Distance(station.getX(),station.getY(),stat.getX(),stat.getY());
 										 liaison.setDistance(d);
 										 
@@ -289,8 +289,8 @@ public class Main4 {
 				 
 			 }
 			 
-			    // nous allons maintenant générer une interface pour visualiser le graphe
-			 	// ce graphe correspond à un plan géométrique des liaisons et des stations de métro
+			    // nous allons maintenant gÃ©nÃ©rer une interface pour visualiser le graphe
+			 	// ce graphe correspond Ã  un plan gÃ©omÃ©trique des liaisons et des stations de mÃ©tro
 			 
 
 			 		//nouss indiquons une taille pour la fenetre
@@ -311,9 +311,9 @@ public class Main4 {
 					     //-------------------------------------------------------------------------------
 				        
 				        
-				        //lorsqu'un itinéraire est trouvé, on veut le colorier
+				        //lorsqu'un itinÃ©raire est trouvÃ©, on veut le colorier
 				        //on change alors la couleur des sommets et des arcs qui correspondent
-				        //à cet itinéraire
+				        //Ã  cet itinÃ©raire
 				        
 				        Transformer<Liaison,Paint> strokePaint = new Transformer<Liaison,Paint>() {
 				        	 public Paint transform(Liaison i) {
@@ -341,9 +341,9 @@ public class Main4 {
 				        vv.setGraphMouse(gm);
 				      
 
-				        //on veut afficher le graphe dans une fenêtre
-				        //on donne les paramètre d'affichage
-				        JFrame frame = new JFrame("Itinéraire Métro de Paris");
+				        //on veut afficher le graphe dans une fenÃªtre
+				        //on donne les paramÃ¨tre d'affichage
+				        JFrame frame = new JFrame("ItinÃ©raire MÃ©tro de Paris");
 					      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					      frame.setSize(800, 800);
 					      frame.isResizable();
@@ -353,7 +353,7 @@ public class Main4 {
 
 					      
 					        
-					        //debut de la création de new fenetre
+					        //debut de la crÃ©ation de new fenetre
 					      
 					      GridLayout gridResult = new GridLayout(2,2,5,5);
 					      GridLayout gridStationFerme = new GridLayout(4,0,5,5);
@@ -399,7 +399,7 @@ public class Main4 {
 							    JScrollPane scrollpane1 = new JScrollPane(listeStations);
 							    JScrollPane scrollpane2 = new JScrollPane(result);
 
-							    fer.add(new JLabel("Stations fermées"));
+							    fer.add(new JLabel("Stations fermÃ©es"));
 							    fer.add(combof);
 							    fer.add(ajoutStationFerme);
 							    fer.add(effacerListe);				    
@@ -453,11 +453,11 @@ public class Main4 {
 					      List<Station> FERME = new ArrayList<Station>();
 					      
 					      
-					      //nous devons aussi faire une liste des stations qui sont fermées,
+					      //nous devons aussi faire une liste des stations qui sont fermÃ©es,
 					      //on indique l'identifiant de la station
-					      //les stations fermées influent sur l'itinéraire à tracer
-					      //le métro ne s'arrete pas au niveau des stations fermées
-					      //on ne peut pas effectuer de correspondance à partir de ces dernières
+					      //les stations fermÃ©es influent sur l'itinÃ©raire Ã  tracer
+					      //le mÃ©tro ne s'arrete pas au niveau des stations fermÃ©es
+					      //on ne peut pas effectuer de correspondance Ã  partir de ces derniÃ¨res
 					      ajoutStationFerme.addActionListener(new ActionListener() {
 						   		
 					        	public void actionPerformed(ActionEvent e) {
@@ -482,7 +482,7 @@ public class Main4 {
 					        	}
 					      });
 					      
-					      //on a un bouton pour effacer la liste des stations fermées
+					      //on a un bouton pour effacer la liste des stations fermÃ©es
 					      effacerListe.addActionListener(new ActionListener() {
 						   		
 					        	public void actionPerformed(ActionEvent e) {
@@ -512,24 +512,24 @@ public class Main4 {
 					        	}
 					      });
 					      
-					      //le bouton suivant sera utilisé pour calculer l'itinéraire après avoir choisi 
-					      // et de fin indiquées dans la fenetre
+					      //le bouton suivant sera utilisÃ© pour calculer l'itinÃ©raire aprÃ¨s avoir choisi 
+					      // et de fin indiquÃ©es dans la fenetre
 					      bouton.addActionListener(new ActionListener() {
 						   		
 					        	public void actionPerformed(ActionEvent e) {
 					        		
 					        		
-			      //on utilise un objet Djikstra pour calculer l'itinéraire le plus court entre deux stations 
+			      //on utilise un objet Djikstra pour calculer l'itinÃ©raire le plus court entre deux stations 
 			      DijkstraShortestPath<Station,Liaison> alg = new DijkstraShortestPath<Station, Liaison>(g,wtTransformer);
   
 
-			      // les données sont lues dans les combobox des stations de départ et d'arrivée
-	       	   // System.out.println("Départ : ");
+			      // les donnÃ©es sont lues dans les combobox des stations de dÃ©part et d'arrivÃ©e
+	       	   // System.out.println("DÃ©part : ");
 	      	    String m = combo.getSelectedItem().toString();
 	      	    String n = combo2.getSelectedItem().toString();
 
-			      //on créé deux listes qui correspondent respectivenet à la liste des stations
-			      //et à la liste des liaisons de l'itinéraire
+			      //on crÃ©Ã© deux listes qui correspondent respectivenet Ã  la liste des stations
+			      //et Ã  la liste des liaisons de l'itinÃ©raire
 			      List<Station> L = new ArrayList<Station>();
 			      List<Liaison> A = new ArrayList<Liaison>();
 			      
@@ -545,7 +545,7 @@ public class Main4 {
 			      }
 			      
 			      
-			      //pour obtenir un itinéraire, on doit taper la station de début et la station de fin
+			      //pour obtenir un itinÃ©raire, on doit taper la station de dÃ©but et la station de fin
 
 			    	  
 			    	  //on vide les zones de texte
@@ -553,9 +553,9 @@ public class Main4 {
 			    	  result.setText("");
 
 
-			      //on modifie les données de la station lorsqu'elle est fermée
+			      //on modifie les donnÃ©es de la station lorsqu'elle est fermÃ©e
 			      //si les liaisons autour sont des correspondances, on ne doit pas les emprunter
-			      //on leur donne une priorité minimale
+			      //on leur donne une prioritÃ© minimale
 			    	  
 			    	  for(Station station : l){
 			    		  if(station.isFerme() == true){
@@ -601,15 +601,15 @@ public class Main4 {
 			      }
 
 			      
-			      //lorsque l'itinéraire est calculé, la station de départ est définit en fonction du nom rentré
+			      //lorsque l'itinÃ©raire est calculÃ©, la station de dÃ©part est dÃ©finit en fonction du nom rentrÃ©
 			      //et non de l'identifiant, un nom de station a un identifiant fixe
-			      //si la première liaison est une correspondance, on l'enlève de la liste
+			      //si la premiÃ¨re liaison est une correspondance, on l'enlÃ¨ve de la liste
 
 			      if(A.get(0).isCorresp() == true){
 			    	  A.remove(0);  
 			      }
 			      
-			      //on enlève aussi la dernière liaison si c'est une correspondance
+			      //on enlÃ¨ve aussi la derniÃ¨re liaison si c'est une correspondance
 			      if(A.get(A.size()-1).isCorresp() == true){
 			    	  A.remove(A.size()-1);  
 			      }
@@ -621,13 +621,13 @@ public class Main4 {
 
 			      Station v = null;
 
-			      //à l'aide de l'objet de transformation plus haut, on colorie les stations
-			      //qui font partie de l'itinéraire
+			      //Ã  l'aide de l'objet de transformation plus haut, on colorie les stations
+			      //qui font partie de l'itinÃ©raire
 			      
-			    //on colorie les liaisons appartenant à la liaison en rouge, les stations de l'itinéraire
-			    //en bleu et les stations fermées en gris
+			    //on colorie les liaisons appartenant Ã  la liaison en rouge, les stations de l'itinÃ©raire
+			    //en bleu et les stations fermÃ©es en gris
 			      
-			      //on colorie d'abort la première station de l'itinéraire...
+			      //on colorie d'abort la premiÃ¨re station de l'itinÃ©raire...
 			      for(Station station : l){
 			    	  if(station.getId() == A.get(0).getA()){
 			    		  L.add(station);
@@ -663,10 +663,10 @@ public class Main4 {
 
 		    	  
 		    	  
-		    	  //on créé une liste String qui affichera la liste des stations dans l'interface graphique
+		    	  //on crÃ©Ã© une liste String qui affichera la liste des stations dans l'interface graphique
 		    	  ArrayList<String> listString = new ArrayList<String>();
 		    	  
-		    	  //on fait attention à ne pas avoir de nom en double dans la liste
+		    	  //on fait attention Ã  ne pas avoir de nom en double dans la liste
 			      for(Station station : L){
 			    	  if(!listString.contains(station.getNom())){
 			    		  listString.add(station.getNom());
@@ -678,14 +678,14 @@ public class Main4 {
 			      }
 			      
 				      
-			      //à l'aide de la transformation du poids des arc plus haut, on calcule le temps
-			      //passé dans les liaisons
+			      //Ã  l'aide de la transformation du poids des arc plus haut, on calcule le temps
+			      //passÃ© dans les liaisons
 			      Number dist = alg.getDistance(L.get(0), L.get(L.size()-1));
 			      
-			      // le temps d'arrêt  à une station= 20 sec
-			      //on estime que pou chaque stations traversées par le métro, il y a un temps d'arrêt de 20 secondes
-			      //on ne compte pas de temps à la station de départ et d'arrivée
-			      //et justement on ne le compte pas non plus aux les stations fermées
+			      // le temps d'arrÃªt  Ã  une station= 20 sec
+			      //on estime que pou chaque stations traversÃ©es par le mÃ©tro, il y a un temps d'arrÃªt de 20 secondes
+			      //on ne compte pas de temps Ã  la station de dÃ©part et d'arrivÃ©e
+			      //et justement on ne le compte pas non plus aux les stations fermÃ©es
 			      double arret = 0;
 			      for(Station station : L){
 			    	  if(station.isFerme() == false)
@@ -697,21 +697,21 @@ public class Main4 {
 
 			      
 			      //on fait la conversion du temps en minutes
-			      //on prend en compte le temps de trajet dans une liaison + le temps d'arret à une stations
+			      //on prend en compte le temps de trajet dans une liaison + le temps d'arret Ã  une stations
 			      double tempsM = (double) dist + arret;
 			      tempsM *= 0.0166667;
 			      
 			      
-			      //les distances sont calculées à partir des coordonnées des stations
+			      //les distances sont calculÃ©es Ã  partir des coordonnÃ©es des stations
 			      //elles sont approximatives
 			      
-			      result.append("## Station de départ :\n"
+			      result.append("## Station de dÃ©part :\n"
 					      + L.get(0).getNom()
-					      +"\n## Station d'arrivée :\n"
+					      +"\n## Station d'arrivÃ©e :\n"
 					      + L.get(L.size()-1).getNom()
-					      + "\n## temps de trajet estimé :\n"
+					      + "\n## temps de trajet estimÃ© :\n"
 					      + Math.round(tempsM) + " minutes"
-					      + "\n## distance à parcourir estimée :\n"
+					      + "\n## distance Ã  parcourir estimÃ©e :\n"
 					      );
 			      
 			      int d = 0;
@@ -721,8 +721,8 @@ public class Main4 {
 			      
 			      String distance = null;
 			      
-			      //on calcule la distance estimée grâce aux coordonnées entre les stations traversées
-			      //on veut afficher la distance en mètre ou en km selon la longueur
+			      //on calcule la distance estimÃ©e grÃ¢ce aux coordonnÃ©es entre les stations traversÃ©es
+			      //on veut afficher la distance en mÃ¨tre ou en km selon la longueur
 			     if(d > 1000){
 			     d /= 1000;
 			     distance = d + " km";
@@ -754,7 +754,7 @@ public class Main4 {
 			      
 			      result.append(corr + "");
 			      if(corr != 0){
-			    	  result.append(" à :\n");
+			    	  result.append(" Ã  :\n");
 			      }
 			      	      
 			      for(Station station : Lcorr){
